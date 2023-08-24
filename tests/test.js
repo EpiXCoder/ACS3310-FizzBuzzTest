@@ -31,7 +31,7 @@ test('Test fizzyBuzzy', () => {
 describe('fizzBuzz function', () => {
 
     test('should return correct fizz, buzz, and fizzbuzz counts', () => {
-        const result = fizzBuzz(15);
+        const result = fb.fizzBuzz(15);
         expect(result.count).toBe(15);
         expect(result.fizz).toBe(4); // for 3, 6, 9, 12
         expect(result.buzz).toBe(2); // for 5, 10
@@ -39,7 +39,7 @@ describe('fizzBuzz function', () => {
     });
 
     test('should return 0 for all counts if given count is 0', () => {
-        const result = fizzBuzz(0);
+        const result = fb.fizzBuzz(0);
         expect(result.count).toBe(0);
         expect(result.fizz).toBe(0);
         expect(result.buzz).toBe(0);
@@ -47,7 +47,7 @@ describe('fizzBuzz function', () => {
     });
 
     test('should handle larger counts correctly', () => {
-        const result = fizzBuzz(100);
+        const result = fb.fizzBuzz(100);
         expect(result.count).toBe(100);
         expect(result.fizz).toBe(27); // Calculate based on FizzBuzz logic
         expect(result.buzz).toBe(14); // Calculate based on FizzBuzz logic

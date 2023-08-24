@@ -39,21 +39,16 @@ function fizzyBuzzy(n) {
  */
 function fizzBuzz(count) {
   let result = { count, fizz: 0, buzz: 0, fizzBuzz: 0 }
-  for (let i = 1; i <= count; i += 1) {
-    const str = fizzyBuzzy(i)
-    switch(str) {
-      case FIZZ: 
-        result.fizz += 1
-        break
-      case BUZZ: 
-        result.buzz += 1
-        break
-      case FIZZBUZZ:
-        result.fizzBuzz += 1
-        break
+  for (let i = 1; i <= count; i++) {
+      if (isFizzy(i) && isBuzzy(i)) {
+        result.fizzBuzz += 1;
+      } else if (isFizzy(i)) {
+        result.fizz += 1;
+      } else if (isBuzzy(i)) {
+        result.buzz += 1;
+      }
     }
-  }
-  return result
+    return result
 }
 
 module.exports.isFizzy = isFizzy
