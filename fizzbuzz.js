@@ -3,33 +3,33 @@ const BUZZ = 'buzz'
 const FIZZBUZZ = 'fizzbuzz'
 
 /** 
- * Returns true when n is divisible by 3 
+ * Returns true when n is divisible by given number
  * @param {Number} n
  * @returns {Boolean} fizziness 
  * */
-function isFizzy(n) {
-  return n % 3 === 0
+function isFizzy(n, fizzOn) {
+  return n % fizzOn === 0;
 }
 
 /**
- * Returns true when n is divisible by 5
+ * Returns true when n is divisible by given number
  * @param {Number} n 
  * @returns {Boolean} buzziness
  */
-function isBuzzy(n) {
-  return n % 5 === 0
+function isBuzzy(n, buzzOn) {
+  return n % buzzOn === 0;
 }
 
 /**
- * Returns FIZZ, BUZZ, or FIZZBUZZ when a number is divisible by 3, 5, or both
+ * Returns FIZZ, BUZZ, or FIZZBUZZ when a number is divisible by given two numbers above, or both
  * @param {Number} n
  * @returns {String} '', 'FIZZ', 'BUZZ', or 'FIZZBUZZ'
  */
-function fizzyBuzzy(n) {
-  let result = ''
-  if (isFizzy(n)) { result += FIZZ }
-  if (isBuzzy(n)) { result += BUZZ }
-  return result
+function fizzyBuzzy(n, fizzOn, buzzOn) {
+  if (isFizzy(n, fizzOn) && isBuzzy(n, buzzOn)) return FIZZBUZZ;
+  if (isFizzy(n, fizzOn)) return FIZZ;
+  if (isBuzzy(n, buzzOn)) return BUZZ;
+  return '';
 }
 
 /**
@@ -37,18 +37,20 @@ function fizzyBuzzy(n) {
  * @param {Number} count 
  * @returns {Object} with properties count, fizz, buzz, and fizzbuzz
  */
-function fizzBuzz(count) {
-  let result = { count, fizz: 0, buzz: 0, fizzBuzz: 0 }
+function fizzBuzz(count, fizzOn = 3, buzzOn = 5) {
+  let result = { count, fizz: 0, buzz: 0, fizzBuzz: 0 };
+
   for (let i = 1; i <= count; i++) {
-      if (isFizzy(i) && isBuzzy(i)) {
-        result.fizzBuzz += 1;
-      } else if (isFizzy(i)) {
-        result.fizz += 1;
-      } else if (isBuzzy(i)) {
-        result.buzz += 1;
-      }
+    if (isFizzy(i, fizzOn) && isBuzzy(i, buzzOn)) {
+      result.fizzBuzz += 1;
+    } else if (isFizzy(i, fizzOn)) {
+      result.fizz += 1;
+    } else if (isBuzzy(i, buzzOn)) {
+      result.buzz += 1;
     }
-    return result
+  }
+
+  return result;
 }
 
 module.exports.isFizzy = isFizzy
